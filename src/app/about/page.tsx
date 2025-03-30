@@ -13,7 +13,7 @@ const About: React.FC = () => {
           <p className="text-lg text-gray-700 mb-4">
             MessAPP is a project created using <strong>Next.js with TypeScript</strong>,
             developed by <span className="font-semibold">Harshith B (23BCE0559)</span> and
-            <span className="font-semibold"> Sahaana (23BCE9050)</span>. Our goal is to enhance the
+            <span className="font-semibold"> Sahaana (23BCE2128)</span>. Our goal is to enhance the
             mess management experience.
           </p>
           <p className="text-lg text-gray-700 mb-4">

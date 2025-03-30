@@ -44,6 +44,8 @@ const FeedbackPage = () => {
         body: formDataToSend,
       });
       
+      const data = await response.json();
+      
       if (response.ok) {
         alert("Feedback submitted successfully!");
         setFormData({
@@ -59,10 +61,11 @@ const FeedbackPage = () => {
           proof: null,
         });
       } else {
-        alert("Failed to submit feedback.");
+        alert(`Error: ${data.error || "Unknown error occurred"}`);
       }
     } catch (error) {
       console.error("Error submitting feedback:", error);
+      alert("Network error or server issue. Please try again.");
     }
   };
 
@@ -122,27 +125,5 @@ const FeedbackPage = () => {
     </div>
   );
 };
-
-const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-        const response = await fetch("/api/feedback", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(FormData),
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-            alert("Feedback submitted successfully!");
-        } else {
-            alert(`Failed: ${data.error || "Unknown error"}`);
-        }
-    } catch (error) {
-        console.error("Error submitting feedback:", error);
-        alert("Network error or server issue.");
-    }
-};
-
 
 export default FeedbackPage;

@@ -92,7 +92,7 @@ export async function POST(request: Request) {
     console.log('Inserting feedback data:', feedbackData);
 
     const [result] = await pool.execute(
-      `INSERT INTO feedback (
+      `INSERT INTO feed1 (
         regNo,
         name,
         block,
@@ -133,7 +133,7 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const [rows] = await pool.query('SELECT * FROM feedback ORDER BY created_at DESC');
+    const [rows] = await pool.query('SELECT * FROM feed1 ORDER BY created_at DESC');
     return NextResponse.json({ success: true, data: rows });
   } catch (error: unknown) {
     console.error('Error fetching feedback:', error);

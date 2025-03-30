@@ -44,8 +44,6 @@ const FeedbackPage = () => {
         body: formDataToSend,
       });
       
-      const data = await response.json();
-      
       if (response.ok) {
         alert("Feedback submitted successfully!");
         setFormData({
@@ -61,18 +59,19 @@ const FeedbackPage = () => {
           proof: null,
         });
       } else {
-        alert(`Error: ${data.error || "Unknown error occurred"}`);
+        const data = await response.json();
+        alert(`Failed: ${data.error || "Unknown error"}`);
       }
     } catch (error) {
       console.error("Error submitting feedback:", error);
-      alert("Network error or server issue. Please try again.");
+      alert("Network error or server issue.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-black-100 flex items-center justify-center p-6">
-      <div className="bg-black p-8 rounded-lg shadow-lg w-full max-w-3xl">
-        <h2 className="text-5xl font-bold mb-6 text-center text-yellow-400">Mess Feedback Form</h2>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">Mess Feedback Form</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           
           {/* Student Info */}
@@ -95,26 +94,32 @@ const FeedbackPage = () => {
           </div>
 
           {/* Feedback Category */}
-          <select name="category" value={formData.category} onChange={handleChange} className="input-field">
-            <option value="Quality">Quality</option>
-            <option value="Quantity">Quantity</option>
-            <option value="Hygiene">Hygiene</option>
-            <option value="Mess Timing">Mess Timing</option>
-            <option value="Other">Other</option>
-          </select>
-
-          {/* Feedback Type */}
-          <select name="feedbackType" value={formData.feedbackType} onChange={handleChange} className="input-field">
-            <option value="Suggestion">Suggestion</option>
-            <option value="Improvement">Improvement</option>
-            <option value="Feedback">Feedback</option>
-          </select>
+          <div className="grid grid-cols-2 gap-4">
+            <select name="category" value={formData.category} onChange={handleChange} className="input-field">
+              <option value="Quality">Quality</option>
+              <option value="Quantity">Quantity</option>
+              <option value="Hygiene">Hygiene</option>
+              <option value="Mess Timing">Mess Timing</option>
+            </select>
+            <select name="feedbackType" value={formData.feedbackType} onChange={handleChange} className="input-field">
+              <option value="Suggestion">Suggestion</option>
+              <option value="Complaint">Complaint</option>
+              <option value="Appreciation">Appreciation</option>
+            </select>
+          </div>
 
           {/* Comments */}
-          <textarea name="comments" placeholder="Enter comments..." value={formData.comments} onChange={handleChange} className="input-field h-28" required />
+          <textarea
+            name="comments"
+            placeholder="Your feedback comments"
+            value={formData.comments}
+            onChange={handleChange}
+            className="input-field w-full h-32 resize-none"
+            required
+          />
 
           {/* File Upload */}
-          <input type="file" name="proof" onChange={handleFileChange} className="block w-full p-2 border rounded-md" />
+          <input type="file" name="proof" onChange={handleFileChange} className="block w-full p-2 border rounded-md bg-white text-gray-700" />
 
           {/* Submit Button */}
           <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">

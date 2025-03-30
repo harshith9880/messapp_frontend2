@@ -69,23 +69,23 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
-        <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">Mess Feedback Form</h2>
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-3xl">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-400">Mess Feedback Form</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           
           {/* Student Info */}
           <div className="grid grid-cols-2 gap-4">
-            <input type="text" name="regNo" placeholder="Reg No" value={formData.regNo} onChange={handleChange} className="input-field" required />
-            <input type="text" name="name" placeholder="Student Name" value={formData.name} onChange={handleChange} className="input-field" required />
-            <input type="text" name="block" placeholder="Block" value={formData.block} onChange={handleChange} className="input-field" required />
-            <input type="text" name="room" placeholder="Room No" value={formData.room} onChange={handleChange} className="input-field" required />
+            <input type="text" name="regNo" placeholder="Reg No" value={formData.regNo} onChange={handleChange} className="input-field bg-gray-700 text-white" required />
+            <input type="text" name="name" placeholder="Student Name" value={formData.name} onChange={handleChange} className="input-field bg-gray-700 text-white" required />
+            <input type="text" name="block" placeholder="Block" value={formData.block} onChange={handleChange} className="input-field bg-gray-700 text-white" required />
+            <input type="text" name="room" placeholder="Room No" value={formData.room} onChange={handleChange} className="input-field bg-gray-700 text-white" required />
           </div>
 
           {/* Mess Info */}
           <div className="grid grid-cols-2 gap-4">
-            <input type="text" name="messName" placeholder="Mess Name" value={formData.messName} onChange={handleChange} className="input-field" required />
-            <select name="messType" value={formData.messType} onChange={handleChange} className="input-field">
+            <input type="text" name="messName" placeholder="Mess Name" value={formData.messName} onChange={handleChange} className="input-field bg-gray-700 text-white" required />
+            <select name="messType" value={formData.messType} onChange={handleChange} className="input-field bg-gray-700 text-white">
               <option value="Veg">Veg</option>
               <option value="Non-Veg">Non-Veg</option>
               <option value="Special">Special</option>
@@ -95,13 +95,13 @@ const FeedbackPage = () => {
 
           {/* Feedback Category */}
           <div className="grid grid-cols-2 gap-4">
-            <select name="category" value={formData.category} onChange={handleChange} className="input-field">
+            <select name="category" value={formData.category} onChange={handleChange} className="input-field bg-gray-700 text-white">
               <option value="Quality">Quality</option>
               <option value="Quantity">Quantity</option>
               <option value="Hygiene">Hygiene</option>
               <option value="Mess Timing">Mess Timing</option>
             </select>
-            <select name="feedbackType" value={formData.feedbackType} onChange={handleChange} className="input-field">
+            <select name="feedbackType" value={formData.feedbackType} onChange={handleChange} className="input-field bg-gray-700 text-white">
               <option value="Suggestion">Suggestion</option>
               <option value="Complaint">Complaint</option>
               <option value="Appreciation">Appreciation</option>
@@ -114,12 +114,12 @@ const FeedbackPage = () => {
             placeholder="Your feedback comments"
             value={formData.comments}
             onChange={handleChange}
-            className="input-field w-full h-32 resize-none"
+            className="input-field w-full h-32 resize-none bg-gray-700 text-white"
             required
           />
 
           {/* File Upload */}
-          <input type="file" name="proof" onChange={handleFileChange} className="block w-full p-2 border rounded-md bg-white text-gray-700" />
+          <input type="file" name="proof" onChange={handleFileChange} className="block w-full p-2 border rounded-md bg-gray-700 text-white" />
 
           {/* Submit Button */}
           <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
